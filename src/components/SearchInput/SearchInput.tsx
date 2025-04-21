@@ -4,7 +4,7 @@ import { Action } from "@reduxjs/toolkit";
 import { useRef } from "react";
 
 const Input = styled.input`
-  width: 100%;
+  width: calc(100% - 58px);
   padding: 8px 14px 8px 44px;
   border: 1px solid #919eab52;
   font-size: 14px;

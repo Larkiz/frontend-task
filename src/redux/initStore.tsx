@@ -7,6 +7,4 @@ export const store = configureStore({
   },
 });
 
-// Типы для работы с хранилищем
 export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
