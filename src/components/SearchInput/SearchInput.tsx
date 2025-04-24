@@ -14,9 +14,10 @@ const Input = styled.input`
 type Props = {
   placeholder: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => Action;
+  value: string;
 };
 
-export const SearchInput = ({ placeholder, onChange }: Props) => {
+export const SearchInput = ({ placeholder, onChange, value }: Props) => {
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
   return (
     <div>
@@ -27,6 +28,7 @@ export const SearchInput = ({ placeholder, onChange }: Props) => {
             onChange(e);
           }, 500);
         }}
+        defaultValue={value}
         placeholder={placeholder}
       />
     </div>

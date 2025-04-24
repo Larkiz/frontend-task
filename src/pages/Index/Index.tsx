@@ -1,10 +1,9 @@
 import { SearchInput } from "@/components/SearchInput/SearchInput";
 import { FirstPost, Post } from "@/pages/Index/Components/PostBlocks";
 import { RootState } from "@/redux/initStore";
-import { changeSearchFilter, setPosts } from "@/redux/slices/postsSlice";
+import { changeSearchFilter } from "@/redux/slices/postsSlice";
 import { PostType } from "@/types/posts";
 
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import styled from "styled-components";
@@ -32,15 +31,6 @@ export const Index = () => {
     (store: RootState) => store.posts
   );
   const dispatch = useDispatch();
-  useEffect(() => {
-    let url: string = "https://jsonplaceholder.typicode.com/posts";
-    if (searchFilter !== "") {
-      url += `?title=${searchFilter}`;
-    }
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => dispatch(setPosts(data)));
-  }, [searchFilter]);
 
   return (
     <div className="index">
@@ -53,6 +43,7 @@ export const Index = () => {
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           dispatch(changeSearchFilter(e.target.value))
         }
+        value={searchFilter}
         placeholder="Поиск по названию строки"
       />
       <PostsWrapper>
